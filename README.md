@@ -7,23 +7,21 @@ Este é um projeto desenvolvido para a disciplina de dispositivos móveis, utili
 Os diretórios do aplicativo estarão distribuídos dessa maneira:
 ```
 lib/
-├── main.dart                 # Ponto de entrada do aplicativo
-├── app.dart                  # Configurações principais do app (temas, rotas, etc)
-├── core/                     # Arquivos de configuração e utilitários
-│   ├── constants.dart        # Constantes globais do app
-│   ├── utils.dart            # Funções utilitárias
-│   ├── themes.dart           # Definições de temas (cores, fontes)
-│   └── routes.dart           # Definições de rotas
-├── features/                 # Funcionalidades específicas do app
-│   ├── funcionabilidade_x/   # Funcionalidade relacionada aos hábitos diários
-│   │   ├── data/             # Modelos de dados, repositórios e fontes de dados
-│   │   ├── domain/           # Lógica de negócios (use cases, serviços)
-│   │   └── presentation/     # Camada de UI (telas, widgets, controle de estado)
-│   └── funcionabilidade_y/   # Outra funcionalidade, por exemplo, usuário
-│       ├── data/        
-│       ├── domain/
-│       └── presentation/
-└── widgets/                  # Widgets reutilizáveis em várias partes do app
+├── core/                             # Arquivos de configuração e utilitários
+│   ├── themes.dart                   # Definições de temas (cores, fontes)
+│   └── routes.dart                   # Definições de rotas
+├── models/                           # Modelos de dados usados no app
+├── modules/                          # Módulos principais do app (organizados por funcionalidade)
+│   ├── habito/                       # Funcionalidade de hábitos diários
+│   ├── home/                         # Tela inicial e lógica da home
+│   └── splash/                       # Tela de splash e inicialização
+│       ├── splash_controller.dart    # Tela de Carregamento
+│       └── splash_screen.dart        # Tela de Carregamento
+└── widgets/                          # Widgets reutilizáveis em várias partes do app
+│       ├── app_info_dialgo.dart      # Dialog com informações básicas do APP
+│       ├── drawer_wdiget.dart        # Barra lateral
+│       └── habito_card.dart          # Card de Habito (exibido na Home)
+├── main.dart                         # Ponto de entrada do aplicativo
 ```
 
 ## Instruções para Executar o Aplicativo
