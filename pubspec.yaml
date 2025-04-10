@@ -67,8 +67,12 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
+<<<<<<< HEAD
   assets:
     - assets/images/flutter_logo.png
+=======
+
+>>>>>>> ee81c94ba23bfa2684a59a7b534424cf04f08919
   fonts:
   - family: nexa
     fonts: 

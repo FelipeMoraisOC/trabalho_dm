@@ -52,10 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(child: _widgetOptions.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
+<<<<<<< HEAD
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_today),
             label: 'Segunda',
           ),
+=======
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+>>>>>>> ee81c94ba23bfa2684a59a7b534424cf04f08919
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Business',
@@ -77,13 +81,34 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: TextStyle(color: Colors.white, fontSize: 24),
               ),
             ),
+<<<<<<< HEAD
+=======
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Configurações'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+>>>>>>> ee81c94ba23bfa2684a59a7b534424cf04f08919
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         tooltip: 'Incrementar',
+<<<<<<< HEAD
         backgroundColor: const Color.fromARGB(255, 255, 17, 156),
+=======
+        backgroundColor: Colors.red,
+>>>>>>> ee81c94ba23bfa2684a59a7b534424cf04f08919
         child: Icon(Icons.add),
       ),
     );
