@@ -1,8 +1,30 @@
-# Projeto Flutter: [Nome do Projeto]
+# Projeto Flutter: Aplicativo de Hábitos Diários
 
 ## Descrição
 
 Este é um projeto desenvolvido para a disciplina de dispositivos móveis, utilizando o Flutter. A aplicação ainda não possui integração com APIs, sendo um aplicativo básico para estudo e prática das funcionalidades do Flutter.
+
+Os diretórios do aplicativo estarão distribuídos dessa maneira:
+```
+lib/
+├── main.dart                 # Ponto de entrada do aplicativo
+├── app.dart                  # Configurações principais do app (temas, rotas, etc)
+├── core/                     # Arquivos de configuração e utilitários
+│   ├── constants.dart        # Constantes globais do app
+│   ├── utils.dart            # Funções utilitárias
+│   ├── themes.dart           # Definições de temas (cores, fontes)
+│   └── routes.dart           # Definições de rotas
+├── features/                 # Funcionalidades específicas do app
+│   ├── funcionabilidade_x/   # Funcionalidade relacionada aos hábitos diários
+│   │   ├── data/             # Modelos de dados, repositórios e fontes de dados
+│   │   ├── domain/           # Lógica de negócios (use cases, serviços)
+│   │   └── presentation/     # Camada de UI (telas, widgets, controle de estado)
+│   └── funcionabilidade_y/   # Outra funcionalidade, por exemplo, usuário
+│       ├── data/        
+│       ├── domain/
+│       └── presentation/
+└── widgets/                  # Widgets reutilizáveis em várias partes do app
+```
 
 ## Instruções para Executar o Aplicativo
 
@@ -37,7 +59,10 @@ Para executar o aplicativo localmente, siga os passos abaixo:
 ## Créditos
 
 - **Flutter**: Framework utilizado para o desenvolvimento do aplicativo.
-- **[Seu Nome]**: Desenvolvimento do projeto.
+  
+- **Erik Matheus Mazzuco**: Desenvolvimento do projeto.
+- **Felipe Morais Oliveira Campos**: Desenvolvimento do projeto.
+- **Joao Otavio Bazzo Zimerman**: Desenvolvimento do projeto.
 
 Se houver mais contribuições, mencione-as aqui!
 
