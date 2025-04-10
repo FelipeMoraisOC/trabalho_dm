@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-# trabalhogap
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
 # Projeto Flutter: Aplicativo de Hábitos Diários
 
 ## Descrição
@@ -96,4 +78,3 @@ Para executar o aplicativo localmente, siga os passos abaixo:
 - **Erik Matheus Mazzuco**: Desenvolvimento do projeto.
 - **Felipe Morais Oliveira Campos**: Desenvolvimento do projeto.
 - **Joao Otavio Bazzo Zimerman**: Desenvolvimento do projeto.
->>>>>>> ee81c94ba23bfa2684a59a7b534424cf04f08919
