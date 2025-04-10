@@ -53,6 +53,8 @@ Para executar o aplicativo localmente, siga os passos abaixo:
 ## Funcionalidades Implementadas
 
 - **Tela Inicial** Lista de hábitos (ordenada por horário) + Botão de Check no hábito, floatActionbutton para adicionar novo hábito;
+![image](https://github.com/user-attachments/assets/7937b195-1ea5-4130-954d-5425e7209ad7)
+
 - **Tela Cadastro Novo Hábito** Nome, descrição, horário, Imagem do Hábito;
 - **Tela Descrição do Hábito** Imagem do Hábito, Visualização de Nome, Horário e Descrição;
 - **Drawer com Estatísticas:**
@@ -64,6 +66,8 @@ Para executar o aplicativo localmente, siga os passos abaixo:
                      --- ex: Estudar 90%
                       ...
   ```
+  ![image](https://github.com/user-attachments/assets/a8cf7938-ce18-4819-adaf-5d6d66066de7)
+
 - **AppBar** Apenas um ícone de calendário;
 - **Componentes básicos do Flutter**: Uso de widgets como `Container`, `Text`, `Button`, entre outros, para estruturar a tela.
 
@@ -74,6 +78,3 @@ Para executar o aplicativo localmente, siga os passos abaixo:
 - **Erik Matheus Mazzuco**: Desenvolvimento do projeto.
 - **Felipe Morais Oliveira Campos**: Desenvolvimento do projeto.
 - **Joao Otavio Bazzo Zimerman**: Desenvolvimento do projeto.
-
-Se houver mais contribuições, mencione-as aqui!
-
