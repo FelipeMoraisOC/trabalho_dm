@@ -32,7 +32,7 @@ Para executar o aplicativo localmente, siga os passos abaixo:
 
 1. **Clone este repositório** para sua máquina local:
     ```bash
-    git clone https://github.com/seu-usuario/nome-do-repositorio.git
+    git clone https://github.com/FelipeMoraisOC/trabalho_dm.git
     ```
 
 2. **Instale o Flutter**:
