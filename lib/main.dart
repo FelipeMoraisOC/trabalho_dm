@@ -113,39 +113,58 @@ class _MyHomePageState extends State<MyHomePage> {
           borderRadius: BorderRadius.circular(16),
         ),
         elevation: 4,
-        margin: const EdgeInsets.symmetric(vertical: 8),
+        margin: const EdgeInsets.symmetric(vertical: 10),
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(30),
           child: Row(
-            children: [
-              // PARTE ESQUERDA (Texto)
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _habitos[index],
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    const Text(
-                      "Criado recentemente",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+  children: [
+    // IMAGEM LATERAL
+    ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        width: 80,
+        height: 80,
+        color: Colors.redAccent.withOpacity(0.3),
+        child: const Icon(
+          Icons.image,
+          size: 40,
+          color: Colors.redAccent,
+        ),
+      ),
+    ),
+    const SizedBox(width: 16),
 
-              // PARTE DIREITA (Imagem ou ícone)
-              const Icon(Icons.image, size: 48, color: Colors.redAccent),
-            ],
-          ),
+    // TEXTO DO HÁBITO
+    Expanded(
+      child: SizedBox(
+        height: 80, // Mesmo valor da imagem
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              _habitos[index],
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 4),
+            const Text(
+              "Criado recentemente",
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  ],
+),
+
+
         ),
       );
     },
