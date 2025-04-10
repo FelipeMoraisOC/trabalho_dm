@@ -1,5 +1,5 @@
-name: trabalhogap
-description: "A new Flutter project."
+name: trabalhodm
+description: "Aplicativo de Hábitos Diários"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -67,12 +67,8 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-<<<<<<< HEAD
   assets:
     - assets/images/flutter_logo.png
-=======
-
->>>>>>> ee81c94ba23bfa2684a59a7b534424cf04f08919
   fonts:
   - family: nexa
     fonts: 

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:flutter/services.dart';
+
+import 'package:trabalhodm/core/themes.dart';
+import 'package:trabalhodm/models/habito.dart';
+import 'package:trabalhodm/modules/habito/add_habito_dialog.dart';
+import 'package:trabalhodm/modules/home/home_screen.dart';
+import 'package:trabalhodm/widgets/app_info_dialog.dart';
+import 'package:trabalhodm/widgets/drawer_widget.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Estilo da status/navigation bar
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    statusBarColor: Colors.red,
-    statusBarIconBrightness: Brightness.light,
-    systemNavigationBarColor: Colors.white,
-    systemNavigationBarIconBrightness: Brightness.dark,
-  ));
 
   runApp(const MyApp());
 }
@@ -23,28 +20,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Colors.red,
-        colorScheme: const ColorScheme.light(
-          primary: Colors.red,
-          secondary: Colors.redAccent,
-        ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-          elevation: 0,
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Colors.red,
-          unselectedItemColor: Colors.black,
-        ),
-        floatingActionButtonTheme: const FloatingActionButtonThemeData(
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-        ),
-      ),
-      home: const MyHomePage(title: 'APP FODA'),
+      title: 'Hábitos Diários',
+      theme: AppTheme.lightTheme, //Tema no arquivo core/themes.dart
+      darkTheme: AppTheme.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const MyHomePage(title: 'Hábitos Diários'),
     );
   }
 }
@@ -59,237 +39,57 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _indiceAtual = 0;
+  final List<Habito> _habitos = [];
   final List<Widget> _telas = [];
-  List<String> _habitos = [];
-
 
   @override
   void initState() {
     super.initState();
-    pedirPermissoes();
-    _telas.addAll([
-      telaPrincipal(),
-      configuracoes(),
-    ]);
+    _telas.addAll([HomeScreen(habitos: _habitos), configuracoes()]);
   }
-
-  Future<void> pedirPermissoes() async {
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.camera,
-      Permission.microphone,
-      Permission.storage,
-      Permission.photos,
-      Permission.videos,
-      Permission.audio,
-      Permission.location,
-      Permission.contacts,
-      Permission.sms,
-      Permission.phone,
-      Permission.calendarFullAccess,
-    ].request();
-
-    statuses.forEach((permissao, status) {
-      if (status.isGranted) {
-        print("Permissão concedida para: $permissao");
-      } else {
-        print("Permissão negada para: $permissao");
-      }
-    });
-  }
-
-  Widget telaPrincipal() {
-  if (_habitos.isEmpty) {
-    return const Center(
-      child: Text("Nenhum hábito adicionado ainda 😴"),
-    );
-  }
-
-  return ListView.builder(
-    padding: const EdgeInsets.all(8),
-    itemCount: _habitos.length,
-    itemBuilder: (context, index) {
-      return Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
-        elevation: 4,
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: Padding(
-          padding: const EdgeInsets.all(30),
-          child: Row(
-  children: [
-    // IMAGEM LATERAL
-    ClipRRect(
-      borderRadius: BorderRadius.circular(12),
-      child: Container(
-        width: 80,
-        height: 80,
-        color: Colors.redAccent.withOpacity(0.3),
-        child: const Icon(
-          Icons.image,
-          size: 40,
-          color: Colors.redAccent,
-        ),
-      ),
-    ),
-    const SizedBox(width: 16),
-
-    // TEXTO DO HÁBITO
-    Expanded(
-      child: SizedBox(
-        height: 80, // Mesmo valor da imagem
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              _habitos[index],
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 4),
-            const Text(
-              "Criado recentemente",
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey,
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  ],
-),
-
-
-        ),
-      );
-    },
-  );
-}
-
-
 
   Widget configuracoes() {
-    return const Center(
-      child: Text("Configurações aqui 🛠️"),
-    );
-  }
-
-  void _mostrarDialogAdicionarHabito() {
-    String novoHabito = "";
-
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Adicionar Hábito"),
-          content: TextField(
-            onChanged: (value) {
-              novoHabito = value;
-            },
-            decoration: const InputDecoration(hintText: "Ex: Beber água"),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text("Cancelar"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.red,
-    foregroundColor: Colors.white,
-  ),
-  child: const Text("Adicionar"),
-  onPressed: () {
-    if (novoHabito.trim().isNotEmpty) {
-      setState(() {
-        _habitos.add(novoHabito.trim());
-      });
-    }
-    Navigator.of(context).pop();
-  },
-),
-          ],
-        );
-      },
-    );
+    return const Center(child: Text("Configurações aqui 🛠️"));
   }
 
   @override
   Widget build(BuildContext context) {
+    Future<void> mostrarDialogAdicionarHabito() async {
+      final resultado = await showDialog<Habito>(
+        context: context,
+        builder: (BuildContext context) {
+          return const AddHabitoDialog();
+        },
+      );
+
+      if (resultado != null) {
+        setState(() {
+          _habitos.add(resultado);
+        });
+      }
+    }
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.info_outline),
-            onPressed: () {
-              showAboutDialog(
-                context: context,
-                applicationName: 'APP FODA',
-                applicationVersion: '1.0.0',
-                applicationIcon: const Icon(Icons.star, color: Colors.red),
-                children: const [Text('Aplicativo de controle de hábitos diários.')],
-              );
-            },
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: const <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.red,
-              ),
-              child: Text(
-                'MENUZINHO TOP',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.check_circle_outline),
-              title: Text('Meus Hábitos'),
-            ),
-            ListTile(
-              leading: Icon(Icons.bar_chart),
-              title: Text('Estatísticas'),
-            ),
-            ListTile(
-              leading: Icon(Icons.info),
-              title: Text('Sobre'),
-            ),
-          ],
-        ),
-      ),
-      body: _indiceAtual == 0 ? telaPrincipal() : configuracoes(),
+      appBar: AppBar(title: Text(widget.title), actions: [AppInfoDialog()]),
+      drawer: DrawerWidget(),
+      body: _indiceAtual == 0 ? HomeScreen(habitos: _habitos) : configuracoes(),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: _mostrarDialogAdicionarHabito,
+        onPressed: mostrarDialogAdicionarHabito,
         child: const Icon(Icons.add),
       ),
-     bottomNavigationBar: BottomNavigationBar(
-  currentIndex: _indiceAtual,
-  onTap: (index) {
-    setState(() {
-      _indiceAtual = index;
-    });
-  },
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _indiceAtual,
+        onTap: (index) {
+          setState(() {
+            _indiceAtual = index;
+          });
+        },
 
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month),
-            label: 'Início',
+            label: 'Hábitos',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
