@@ -52,8 +52,19 @@ Para executar o aplicativo localmente, siga os passos abaixo:
 
 ## Funcionalidades Implementadas
 
-- **Interface básica de navegação**: A aplicação possui uma tela inicial com navegação entre páginas.
-- **UI responsiva**: A interface do usuário se adapta a diferentes tamanhos de tela.
+- **Tela Inicial** Lista de hábitos (ordenada por horário) + Botão de Check no hábito, floatActionbutton para adicionar novo hábito;
+- **Tela Cadastro Novo Hábito** Nome, descrição, horário, Imagem do Hábito;
+- **Tela Descrição do Hábito** Imagem do Hábito, Visualização de Nome, Horário e Descrição;
+- **Drawer com Estatísticas:**
+  ```
+  - DrawerHeader --- Imagem do Usuário (perfil genérico), Nome do Usuário (nome genérico)
+  - Lista        --- Porcentagem geral de todos os Hábitos ex: (Total: 87%)
+                 --- Hábitos e a porcetagem de cada hábito na semana
+                     --- ex: Café 100%
+                     --- ex: Estudar 90%
+                      ...
+  ```
+- **AppBar** Apenas um ícone de calendário;
 - **Componentes básicos do Flutter**: Uso de widgets como `Container`, `Text`, `Button`, entre outros, para estruturar a tela.
 
 ## Créditos
