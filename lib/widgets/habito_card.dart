@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:trabalhodm/core/app_colors.dart';
 import 'package:trabalhodm/models/habito.dart';
 
-class HabitosCard extends StatelessWidget {
+class HabitoCard extends StatelessWidget {
   final Habito habito;
-  const HabitosCard({super.key, required this.habito});
+  const HabitoCard({super.key, required this.habito});
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,18 @@ class HabitosCard extends StatelessWidget {
             // IMAGEM LATERAL
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Container(
-                width: 80,
+              child: Image.asset(
+                habito.imagem,
                 height: 80,
-                color: AppColors.primary,
-                child: const Icon(
-                  Icons.image,
-                  size: 40,
-                  color: AppColors.secondary,
-                ),
+                width: 80,
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    width: 80,
+                    height: 80,
+                    color: Colors.grey,
+                    child: const Icon(Icons.broken_image),
+                  );
+                },
               ),
             ),
             const SizedBox(width: 16),

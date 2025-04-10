@@ -4,6 +4,7 @@ import 'package:trabalhodm/core/themes.dart';
 import 'package:trabalhodm/models/habito.dart';
 import 'package:trabalhodm/modules/habito/add_habito_dialog.dart';
 import 'package:trabalhodm/modules/home/home_screen.dart';
+import 'package:trabalhodm/widgets/app_bottom_navigation.dart';
 import 'package:trabalhodm/widgets/app_info_dialog.dart';
 import 'package:trabalhodm/widgets/drawer_widget.dart';
 
@@ -39,7 +40,26 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _indiceAtual = 0;
-  final List<Habito> _habitos = [];
+  final List<Habito> _habitos = [
+    Habito(
+      nome: 'Café da Manhã',
+      descricao: 'Aveia, banana, maçã',
+      horario: TimeOfDay(hour: 06, minute: 30),
+      imagem: 'assets/images/cafe-mockup.jpg',
+    ),
+    Habito(
+      nome: 'Academia',
+      descricao: 'Treinar academia',
+      horario: TimeOfDay(hour: 7, minute: 30),
+      imagem: 'assets/images/academia-mockup.webp',
+    ),
+    Habito(
+      nome: 'Estudar',
+      descricao: 'Arvores e grafos',
+      horario: TimeOfDay(hour: 9, minute: 00),
+      imagem: 'assets/images/estudos-mockup.webp',
+    ),
+  ];
   final List<Widget> _telas = [];
 
   @override
@@ -49,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget configuracoes() {
-    return const Center(child: Text("Configurações aqui 🛠️"));
+    return const Center(child: Text('Configurações aqui 🛠️'));
   }
 
   @override
@@ -61,7 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
           return const AddHabitoDialog();
         },
       );
-
       if (resultado != null) {
         setState(() {
           _habitos.add(resultado);
@@ -78,24 +97,11 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: mostrarDialogAdicionarHabito,
         child: const Icon(Icons.add),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: AppBottomNavigation(
         currentIndex: _indiceAtual,
         onTap: (index) {
-          setState(() {
-            _indiceAtual = index;
-          });
+          setState(() => _indiceAtual = index);
         },
-
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: 'Hábitos',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Configurações',
-          ),
-        ],
       ),
     );
   }

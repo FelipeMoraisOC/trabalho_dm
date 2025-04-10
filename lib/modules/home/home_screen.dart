@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:trabalhodm/models/habito.dart';
-import 'package:trabalhodm/widgets/habitos_card.dart';
+import 'package:trabalhodm/widgets/habito_card.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Habito> habitos;
@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       itemCount: habitos.length,
       itemBuilder: (context, index) {
-        return HabitosCard(habito: habitos[index]);
+        return HabitoCard(habito: habitos[index]);
       },
     );
   }
